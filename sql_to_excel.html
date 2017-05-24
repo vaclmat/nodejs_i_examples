@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SQL to Excel</title>
+</head>
+<style>
+#sql_part, #mail_part {
+    width: 800px;
+    height: 310px;
+    border: 1px solid #c3c3c3;
+    background-color: powderblue;
+}
+input, select {
+height:30px;
+border:#ccc solid 1px
+}
+input[type="text"] {
+width:500px
+}
+input[type="submit"] {
+margin:1em;
+width:120px
+}
+</style>
+<script>
+ function check() {
+ 	if (document.getElementById("sql_options").value === "emp") {
+ 		document.getElementById("sql").value="select firstnme, lastname, job, empno, sex from sample.employee";
+ 	}
+    if (document.getElementById("sql_options").value === "dep") {
+ 		document.getElementById("sql").value="select * from sample.org";
+ 	}
+ 	if (document.getElementById("sql_options").value === "sal") {
+ 		document.getElementById("sql").value="select * from sample.sales";
+ 	}
+ 	if (document.getElementById("sql_options").value === "noth") {
+ 		document.getElementById("sql").value="";
+ 	}
+  } 
+  
+  function mail() {
+  	var elem1 = document.getElementById('sql_part');
+  	var elem2 = document.getElementById('mail_part');
+  	elem1.style.display = 'none';
+  	elem2.style.display = 'block';
+  }
+  
+  function sql_div() {
+  	var elem1 = document.getElementById('sql_part');
+  	var elem2 = document.getElementById('mail_part');
+  	elem1.style.display = 'block';
+  	elem2.style.display = 'none';
+  }
+ </script>
+<body>
+<h1>SQL to Excel test application</h1>
+<div id="sql_part" style="display: block">
+<h2>Create excel sheet</h2>
+<form name="input" action="query" method="get">
+<h3>Preselected SQL Commands: </h3>
+ <select name="sql_options" id="sql_options" onChange="check();">
+  <option value="noth"></option> 
+  <option value="emp">Employees</option>
+  <option value="dep">Department</option>
+  <option value="sal">Sales</option>
+</select> 
+<br>
+<input type="text" name="sql" id="sql" value="" readonly/>
+<input type="submit" value="Query" onClick="mail()"/>
+</form>
+<form name="input" action="ext" method="get">
+<input type="hidden" name="ex" value="exit"/>
+<input type="submit" value="Exit"/>
+</form>
+<div id="footer" align="right">
+Powered by    <img src="/images/nodejs.jpg" alt="Node.js" style="width:50px;height:25px;;">   on    
+<img src="/images/IBM_i.jpg" alt="IBM i" style="width:50px;height:50px;">
+</div>
+</div>
+<div id="mail_part" style="display: none">
+<h2>Send excel file by email</h2>
+<form name="mail_data" action="query" method="get">
+<h3>Mail recipicient: </h3>
+ <select name="mail_adr_options" id="mail_adr_options">
+  <option value="noth"></option> 
+  <option value="vaclmat">Václav Matoušek</option>
+</select> 
+<input type="submit" value="Mail" onClick="sql_div()"/>
+</form>
+<div id="footer" align="right">
+Powered by    <img src="/images/nodejs.jpg" alt="Node.js" style="width:50px;height:25px;;">   on    
+<img src="/images/IBM_i.jpg" alt="IBM i" style="width:50px;height:50px;">
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Node.js for i Sample</title>
+</head>
+<style>
+#inp_part {
+    width: 800px;
+    height: 350px;
+    border: 1px solid #c3c3c3;
+    background-color: powderblue;
+}
+input {
+height:30px;
+border:#ccc solid 1px
+}
+input[type="text"] {
+width:500px
+}
+input[type="submit"] {
+margin:1em;
+width:120px
+}
+</style>
+<body>
+<h1>SQL and CL commands test application</h1>
+<div id="inp_part">
+<form name="input" action="query" method="get">
+<h4>SQL Command: </h4>
+<input type="text" name="sql" placeholder="SELECT * FROM ..."/>
+<input type="submit" value="Query"/>
+</form>
+<form name="input" action="cmd" method="get">
+<h4>CL Command: </h4>
+<input type="text" name="cl" placeholder="WRKSYSSTS"/>
+<input type="submit" value="Run"/>
+</form>
+<form name="input" action="ext" method="get">
+<input type="hidden" name="ex" value="exit"/>
+<input type="submit" value="Exit"/>
+</form>
+<div id="footer" align="right">
+Powered by    <img src="/images/nodejs.jpg" alt="Node.js" style="width:50px;height:25px;;">   on    
+<img src="/images/IBM_i.jpg" alt="IBM i" style="width:50px;height:50px;">
+</div>
+</div>
+</body>
+</html>
